@@ -1,0 +1,1972 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>기억의 집 - AI 콘텐츠 플랫폼</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      color: #2c3e50;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Header */
+    header {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      padding: 1rem 0;
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #2c3e50;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      color: #2c3e50;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+      padding: 0.5rem 1rem;
+      border-radius: 25px;
+      transition: all 0.3s ease;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      min-width: fit-content;
+    }
+
+    .nav-links a:hover {
+      background: #3498db;
+      color: white;
+    }
+
+    /* Hero Section */
+    #hero {
+      padding: 120px 0 80px;
+      text-align: center;
+      color: #2c3e50;
+      position: relative;
+      overflow: hidden;
+      background: white;
+    }
+
+    #hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, #ecf0f1 0%, #bdc3c7 100%);
+      z-index: -1;
+    }
+
+    .hero-content h1 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      color: #2c3e50;
+    }
+
+    .hero-content p {
+      font-size: 1.3rem;
+      margin-bottom: 2.5rem;
+      color: #34495e;
+    }
+
+    .cta-button {
+      background: #3498db;
+      color: white;
+      border: none;
+      padding: 1rem 2.5rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(52, 152, 219, 0.4);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      min-width: fit-content;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(52, 152, 219, 0.6);
+      background: #2980b9;
+    }
+
+    /* Hero Stats */
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      margin: 2rem 0;
+      flex-wrap: wrap;
+    }
+
+    .stat-item {
+      text-align: center;
+      color: #2c3e50;
+    }
+
+    .stat-number {
+      display: block;
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: #3498db;
+    }
+
+    .stat-label {
+      font-size: 0.9rem;
+      color: #7f8c8d;
+    }
+
+    /* Business Model Section */
+    #business-model {
+      padding: 80px 0;
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    }
+
+    .business-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .business-card {
+      background: white;
+      padding: 2.5rem;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      border: 1px solid #f0f0f0;
+    }
+
+    .business-card h3 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      color: #2c3e50;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .business-card h3 i {
+      color: #3498db;
+    }
+
+    .market-stats {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .market-stat {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem;
+      background: #ecf0f1;
+      color: #2c3e50;
+      border-radius: 10px;
+      border: 1px solid #bdc3c7;
+    }
+
+    .market-stat .stat-number {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #3498db;
+    }
+
+    .market-stat .stat-label {
+      font-size: 0.9rem;
+      color: #34495e;
+      font-weight: 500;
+    }
+
+    .revenue-streams, .target-segments, .growth-strategy {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .revenue-item, .segment-item, .strategy-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem;
+      background: #ecf0f1;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+      border: 1px solid #bdc3c7;
+    }
+
+    .revenue-item:hover, .segment-item:hover, .strategy-item:hover {
+      background: #d5dbdb;
+      transform: translateX(5px);
+    }
+
+    .revenue-icon, .segment-icon {
+      font-size: 1.5rem;
+    }
+
+    .strategy-number {
+      background: #3498db;
+      color: white;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+
+    .revenue-text, .segment-text, .strategy-text {
+      font-weight: 500;
+      color: #2c3e50;
+    }
+
+    /* Competitive Advantage Section */
+    #competitive-advantage {
+      padding: 80px 0;
+      background: white;
+    }
+
+    .advantage-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+    }
+
+    .advantage-card {
+      background: white;
+      padding: 2.5rem;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      border: 1px solid #f0f0f0;
+      transition: all 0.3s ease;
+    }
+
+    .advantage-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    }
+
+    .advantage-icon {
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    .advantage-card h3 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: #2c3e50;
+      text-align: center;
+    }
+
+    .advantage-card p {
+      color: #34495e;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    .advantage-features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      justify-content: center;
+    }
+
+    .feature-tag {
+      background: #3498db;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
+    /* Features Section */
+    #features {
+      padding: 80px 0;
+      background: white;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 3rem;
+      color: #2c3e50;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-bottom: 4rem;
+    }
+
+    .feature-card {
+      background: white;
+      padding: 2.5rem;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      text-align: center;
+      transition: all 0.3s ease;
+      border: 1px solid #f0f0f0;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    }
+
+    .feature-icon {
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+      color: #3498db;
+    }
+
+    .feature-card h3 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: #2c3e50;
+    }
+
+    .feature-card p {
+      color: #34495e;
+      line-height: 1.6;
+    }
+
+    /* Demo Section */
+    #demo {
+      padding: 80px 0;
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    }
+
+    .demo-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+    }
+
+    .demo-card {
+      background: white;
+      padding: 2.5rem;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      border: 1px solid #f0f0f0;
+    }
+
+    .demo-card h3 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      color: #2c3e50;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .demo-card h3 i {
+      color: #3498db;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      color: #2c3e50;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 1rem;
+      border: 2px solid #bdc3c7;
+      border-radius: 10px;
+      font-size: 1rem;
+      transition: border-color 0.3s ease;
+      font-family: inherit;
+      background: white;
+    }
+
+    .form-control:focus {
+      outline: none;
+      border-color: #3498db;
+      box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+    }
+
+    /* Custom File Input */
+    .file-input-wrapper {
+      position: relative;
+      display: inline-block;
+      width: 100%;
+    }
+
+    .file-input-wrapper input[type="file"] {
+      position: absolute;
+      left: -9999px;
+      opacity: 0;
+    }
+
+    .file-input-label {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      background: #3498db;
+      color: white;
+      padding: 1rem 2rem;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 600;
+      border: none;
+      width: 100%;
+      font-size: 1rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      min-width: fit-content;
+    }
+
+    .file-input-label:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+      background: #2980b9;
+    }
+
+    .file-input-label i {
+      font-size: 1.2rem;
+    }
+
+    .btn-primary {
+      background: #3498db;
+      color: white;
+      border: none;
+      padding: 1rem 2rem;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      width: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      min-width: fit-content;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+      background: #2980b9;
+    }
+
+    /* Chat Interface */
+    .chat-container {
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      overflow: hidden;
+      margin-top: 2rem;
+    }
+
+    .chat-header {
+      background: #3498db;
+      color: white;
+      padding: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .chat-header h3 {
+      margin: 0;
+      font-size: 1.3rem;
+    }
+
+    .chat-messages {
+      height: 400px;
+      overflow-y: auto;
+      padding: 1.5rem;
+      background: #f8f9fa;
+    }
+
+    .message {
+      margin-bottom: 1rem;
+      display: flex;
+      gap: 1rem;
+    }
+
+    .message.user {
+      flex-direction: row-reverse;
+    }
+
+    .message-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+
+    .message.user .message-avatar {
+      background: #3498db;
+      color: white;
+    }
+
+    .message.ai .message-avatar {
+      background: linear-gradient(135deg, #10b981, #059669);
+      color: white;
+    }
+
+    .message-content {
+      background: white;
+      padding: 1rem;
+      border-radius: 15px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      max-width: 70%;
+      word-wrap: break-word;
+    }
+
+    .message.user .message-content {
+      background: #3498db;
+      color: white;
+    }
+
+    .message.ai .message-content {
+      background: white;
+      color: #2c3e50;
+    }
+
+    .chat-input {
+      display: flex;
+      gap: 1rem;
+      padding: 1.5rem;
+      background: white;
+      border-top: 1px solid #e9ecef;
+    }
+
+    .chat-input input {
+      flex: 1;
+      padding: 1rem;
+      border: 2px solid #bdc3c7;
+      border-radius: 25px;
+      font-size: 1rem;
+      transition: border-color 0.3s ease;
+      background: white;
+    }
+
+    .chat-input input:focus {
+      outline: none;
+      border-color: #3498db;
+      box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+    }
+
+    .chat-send-btn {
+      background: #3498db;
+      color: white;
+      border: none;
+      padding: 1rem 1.5rem;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      min-width: fit-content;
+    }
+
+    .chat-send-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+      background: #2980b9;
+    }
+
+    /* Reviews Section */
+    #reviews {
+      padding: 80px 0;
+      background: white;
+    }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .review-card {
+      background: #ecf0f1;
+      padding: 2rem;
+      border-radius: 20px;
+      border-left: 5px solid #3498db;
+      position: relative;
+    }
+
+    .review-card::before {
+      content: '"';
+      font-size: 4rem;
+      color: #3498db;
+      position: absolute;
+      top: -10px;
+      left: 20px;
+      opacity: 0.3;
+    }
+
+    .review-card p {
+      margin-bottom: 1rem;
+      font-style: italic;
+      color: #2c3e50;
+      line-height: 1.6;
+    }
+
+    .review-author {
+      font-weight: 600;
+      color: #3498db;
+    }
+
+    /* Footer */
+    footer {
+      background: #2c3e50;
+      color: white;
+      text-align: center;
+      padding: 3rem 0;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+
+    .footer-logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .social-links a {
+      color: white;
+      font-size: 1.5rem;
+      transition: color 0.3s ease;
+    }
+
+    .social-links a:hover {
+      color: #3498db;
+    }
+
+    /* Community Section */
+    #community {
+      padding: 80px 0;
+      background: white;
+    }
+
+    .community-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .stat-card {
+      background: #ecf0f1;
+      padding: 2rem;
+      border-radius: 20px;
+      text-align: center;
+      border: 1px solid #bdc3c7;
+    }
+
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #3498db;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+      color: #7f8c8d;
+      font-weight: 500;
+    }
+
+    .community-filters {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      background: white;
+      border: 2px solid #bdc3c7;
+      color: #7f8c8d;
+      padding: 0.75rem 1.5rem;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 500;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      min-width: fit-content;
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: #3498db;
+      color: white;
+      border-color: #3498db;
+    }
+
+    .community-posts {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .post-card {
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: all 0.3s ease;
+      border: 1px solid #f0f0f0;
+    }
+
+    .post-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    }
+
+    .post-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem;
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    .post-author {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .author-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #3498db;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.2rem;
+    }
+
+    .author-name {
+      font-weight: 600;
+      color: #2c3e50;
+    }
+
+    .post-date {
+      font-size: 0.9rem;
+      color: #7f8c8d;
+    }
+
+    .post-category {
+      background: #3498db;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 15px;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .post-content {
+      padding: 1.5rem;
+    }
+
+    .post-content h3 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: #2c3e50;
+    }
+
+    .post-content p {
+      color: #34495e;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+
+    .post-image {
+      margin-top: 1rem;
+    }
+
+    .post-actions {
+      display: flex;
+      gap: 1rem;
+      padding: 1.5rem;
+      border-top: 1px solid #f0f0f0;
+    }
+
+    .action-btn {
+      background: none;
+      border: none;
+      color: #7f8c8d;
+      cursor: pointer;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      min-width: fit-content;
+    }
+
+    .action-btn:hover {
+      background: #ecf0f1;
+      color: #3498db;
+    }
+
+    .community-cta {
+      text-align: center;
+      background: #ecf0f1;
+      padding: 3rem;
+      border-radius: 20px;
+      margin-top: 2rem;
+    }
+
+    .community-cta h3 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: #2c3e50;
+    }
+
+         .community-cta p {
+       color: #34495e;
+       margin-bottom: 2rem;
+     }
+
+     /* Verification Badge - X Style */
+     .verification-badge {
+       display: inline-flex;
+       align-items: center;
+       justify-content: center;
+       background: #1d9bf0;
+       color: white;
+       width: 18px;
+       height: 18px;
+       border-radius: 50%;
+       margin-left: 0.5rem;
+       font-size: 0.7rem;
+       box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+       position: relative;
+     }
+
+     .verification-badge i {
+       font-size: 0.6rem;
+       font-weight: bold;
+     }
+
+     @keyframes pulse {
+       0% {
+         transform: scale(1);
+       }
+       50% {
+         transform: scale(1.1);
+       }
+       100% {
+         transform: scale(1);
+       }
+     }
+
+     /* Inspector System */
+     .inspector-system {
+       background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+       border-radius: 20px;
+       padding: 2rem;
+       margin-top: 3rem;
+       border: 2px solid #667eea;
+     }
+
+     .inspector-header {
+       text-align: center;
+       margin-bottom: 2rem;
+     }
+
+     .inspector-header h3 {
+       font-size: 1.5rem;
+       font-weight: 600;
+       color: #333;
+       margin-bottom: 1rem;
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       gap: 0.5rem;
+     }
+
+     .inspector-header h3 i {
+       color: #667eea;
+     }
+
+     .inspector-header p {
+       color: #666;
+       font-size: 1.1rem;
+     }
+
+     .inspector-stats {
+       display: grid;
+       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+       gap: 1.5rem;
+       margin-bottom: 2rem;
+     }
+
+     .inspector-stat {
+       background: white;
+       padding: 1.5rem;
+       border-radius: 15px;
+       display: flex;
+       align-items: center;
+       gap: 1rem;
+       box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+       transition: all 0.3s ease;
+     }
+
+     .inspector-stat:hover {
+       transform: translateY(-3px);
+       box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+     }
+
+     .stat-icon {
+       background: linear-gradient(135deg, #667eea, #764ba2);
+       color: white;
+       width: 50px;
+       height: 50px;
+       border-radius: 50%;
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       font-size: 1.5rem;
+     }
+
+     .stat-info .stat-number {
+       font-size: 1.8rem;
+       font-weight: 700;
+       color: #333;
+       margin-bottom: 0.2rem;
+     }
+
+     .stat-info .stat-label {
+       font-size: 0.9rem;
+       color: #666;
+       font-weight: 500;
+     }
+
+     .inspector-process {
+       background: white;
+       border-radius: 15px;
+       padding: 2rem;
+       box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+     }
+
+     .inspector-process h4 {
+       font-size: 1.3rem;
+       font-weight: 600;
+       color: #333;
+       margin-bottom: 1.5rem;
+       text-align: center;
+     }
+
+     .process-steps {
+       display: grid;
+       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+       gap: 1.5rem;
+     }
+
+     .process-step {
+       display: flex;
+       align-items: flex-start;
+       gap: 1rem;
+       padding: 1rem;
+       border-radius: 10px;
+       background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+       transition: all 0.3s ease;
+     }
+
+     .process-step:hover {
+       background: linear-gradient(135deg, #667eea, #764ba2);
+       color: white;
+     }
+
+     .process-step:hover .step-content h5,
+     .process-step:hover .step-content p {
+       color: white;
+     }
+
+     .step-number {
+       background: linear-gradient(135deg, #667eea, #764ba2);
+       color: white;
+       width: 30px;
+       height: 30px;
+       border-radius: 50%;
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       font-weight: 600;
+       font-size: 0.9rem;
+       flex-shrink: 0;
+     }
+
+     .step-content h5 {
+       font-size: 1rem;
+       font-weight: 600;
+       margin-bottom: 0.5rem;
+       color: #333;
+     }
+
+     .step-content p {
+       font-size: 0.9rem;
+       color: #666;
+       line-height: 1.4;
+     }
+
+     /* Responsive Design */
+    @media (max-width: 768px) {
+      .hero-content h1 {
+        font-size: 2.5rem;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .demo-container {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-content {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .chat-messages {
+        height: 300px;
+      }
+
+      .message-content {
+        max-width: 85%;
+      }
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .feature-card, .demo-card, .review-card {
+      animation: fadeInUp 0.6s ease-out;
+    }
+
+    /* Loading States */
+    .loading {
+      opacity: 0.7;
+      pointer-events: none;
+    }
+
+    /* Success States */
+    .success {
+      border-color: #28a745 !important;
+      background-color: #f8fff9;
+    }
+
+    /* Error States */
+    .error {
+      border-color: #dc3545 !important;
+      background-color: #fff8f8;
+    }
+
+    /* Typing indicator */
+    .typing-indicator {
+      display: flex;
+      gap: 0.3rem;
+      padding: 1rem;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      max-width: 70%;
+    }
+
+    .typing-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #667eea;
+      animation: typing 1.4s infinite ease-in-out;
+    }
+
+    .typing-dot:nth-child(1) { animation-delay: -0.32s; }
+    .typing-dot:nth-child(2) { animation-delay: -0.16s; }
+
+    @keyframes typing {
+      0%, 80%, 100% {
+        transform: scale(0.8);
+        opacity: 0.5;
+      }
+      40% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <div class="header-content">
+      <a href="#" class="logo">🏠 기억의 집</a>
+      <nav class="nav-links">
+        <a href="#features">소개</a>
+        <a href="#business-model">비즈니스</a>
+        <a href="#competitive-advantage">차별화</a>
+        <a href="#demo">체험하기</a>
+        <a href="#chat">AI 채팅</a>
+        <a href="#community">커뮤니티</a>
+        <a href="#reviews">리뷰</a>
+        <a href="#" style="background: #3498db; color: white; padding: 0.5rem 1.5rem; border-radius: 25px; transition: all 0.3s ease; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: fit-content;">로그인</a>
+        <a href="#" style="background: transparent; color: #3498db; border: 2px solid #3498db; padding: 0.5rem 1.5rem; border-radius: 25px; transition: all 0.3s ease; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: fit-content;">회원가입</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<section id="hero">
+  <div class="container">
+    <div class="hero-content">
+      <h1>기억을 보존하는<br>AI 콘텐츠 플랫폼</h1>
+      <p>가족의 소중한 추억을 AI로 영원히 보존하고, 세대 간 연결을 만들어갑니다</p>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <span class="stat-number">1,000만+</span>
+          <span class="stat-label">잠재 고객</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">1조원+</span>
+          <span class="stat-label">시장 규모</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">98.5%</span>
+          <span class="stat-label">고객 만족도</span>
+        </div>
+      </div>
+      <button class="cta-button" onclick="document.getElementById('demo').scrollIntoView({behavior:'smooth'})">
+        <i class="fas fa-play"></i> 지금 시작하기
+      </button>
+    </div>
+  </div>
+</section>
+
+             <section id="features">
+               <div class="container">
+                 <h2 class="section-title">🌟 창업 아이디어 핵심 가치</h2>
+                 <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">💡</div>
+        <h3>독창적인 시장 창출</h3>
+        <p>기억 보존이라는 새로운 시장을 개척하여 AI + 감정적 가치의 융합 서비스를 제공합니다.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">👨‍👩‍👧‍👦</div>
+        <h3>세대 간 연결 증진</h3>
+        <p>가족의 소중한 추억을 AI로 보존하여 세대 간 소통과 이해를 돕습니다.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🏥</div>
+        <h3>사회적 가치 창출</h3>
+        <p>치매 예방, 기억 보존을 통한 건강한 노년 문화 조성에 기여합니다.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">💰</div>
+        <h3>다각화된 수익 모델</h3>
+        <p>구독제, B2B 서비스, 광고 수익 등 다양한 수익원을 통한 지속가능한 비즈니스 모델을 구축합니다.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🌏</div>
+        <h3>글로벌 확장 가능성</h3>
+        <p>보편적 감정인 추억과 가족 가치를 활용하여 글로벌 시장 진출이 가능합니다.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔬</div>
+        <h3>기술적 차별화</h3>
+        <p>STT, TTS, 이미지 생성 등 다중 AI 기술을 통합한 독특한 서비스 경험을 제공합니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="demo">
+  <div class="container">
+    <h2 class="section-title">🔍 콘텐츠 생성 체험</h2>
+    <div class="demo-container">
+      <div class="demo-card">
+        <h3><i class="fas fa-pen-fancy"></i> 스토리 생성</h3>
+        <div class="form-group">
+          <label>기억에 남는 순간을 적어보세요:</label>
+          <textarea class="form-control" placeholder="예: 첫 월급으로 부모님께 선물했던 날, 그때의 감정과 기억을 자세히 적어주세요..." rows="4"></textarea>
+        </div>
+        <button class="btn-primary">
+          <i class="fas fa-magic"></i> 스토리 생성하기
+        </button>
+      </div>
+
+      <div class="demo-card">
+        <h3><i class="fas fa-microphone"></i> 음성 파일 업로드</h3>
+        <div class="form-group">
+          <label>음성 파일을 업로드하세요:</label>
+          <div class="file-input-wrapper">
+            <input type="file" id="audioFile" accept="audio/*" />
+            <label for="audioFile" class="file-input-label">
+              <i class="fas fa-cloud-upload-alt"></i>
+              파일 선택하기
+            </label>
+          </div>
+        </div>
+        <button class="btn-primary">
+          <i class="fas fa-language"></i> 텍스트로 변환하기
+        </button>
+      </div>
+
+      <div class="demo-card">
+        <h3><i class="fas fa-image"></i> 이미지 생성</h3>
+        <div class="form-group">
+          <label>생성하고 싶은 이미지를 설명해주세요:</label>
+          <input type="text" class="form-control" placeholder="예: 붉은 노을 아래 걷는 두 사람, 따뜻한 감정이 느껴지는 그림" />
+        </div>
+        <button class="btn-primary">
+          <i class="fas fa-palette"></i> 이미지 생성하기
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="chat">
+  <div class="container">
+    <h2 class="section-title">💬 AI와 대화하기</h2>
+    <div class="chat-container">
+      <div class="chat-header">
+        <i class="fas fa-robot"></i>
+        <h3>AI 어시스턴트</h3>
+      </div>
+      <div class="chat-messages" id="chatMessages">
+        <div class="message ai">
+          <div class="message-avatar">
+            <i class="fas fa-robot"></i>
+          </div>
+          <div class="message-content">
+            안녕하세요! 저는 기억의 집 AI 어시스턴트입니다. 당신의 이야기를 들려주시면 아름다운 콘텐츠로 만들어드릴게요. 무엇을 도와드릴까요?
+          </div>
+        </div>
+      </div>
+      <div class="chat-input">
+        <input type="text" id="chatInput" placeholder="메시지를 입력하세요..." />
+        <button class="chat-send-btn" onclick="sendMessage()">
+          <i class="fas fa-paper-plane"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+  </section>
+
+  <!-- 시장 분석 및 비즈니스 모델 섹션 추가 -->
+  <section id="business-model">
+    <div class="container">
+      <h2 class="section-title">📊 시장 분석 및 비즈니스 모델</h2>
+      
+      <div class="business-grid">
+        <div class="business-card">
+          <h3><i class="fas fa-chart-line"></i> 시장 규모</h3>
+          <div class="market-stats">
+            <div class="market-stat">
+              <span class="stat-number">1,000만명+</span>
+              <span class="stat-label">한국 노년층 인구</span>
+            </div>
+            <div class="market-stat">
+              <span class="stat-number">1조원+</span>
+              <span class="stat-label">연간 시장 규모</span>
+            </div>
+            <div class="market-stat">
+              <span class="stat-number">15%</span>
+              <span class="stat-label">연평균 성장률</span>
+            </div>
+          </div>
+          <p>인구 고령화와 AI 기술 발전으로 인해 기억 보존 시장이 급성장하고 있습니다.</p>
+        </div>
+
+        <div class="business-card">
+          <h3><i class="fas fa-coins"></i> 수익 모델</h3>
+          <div class="revenue-streams">
+            <div class="revenue-item">
+              <span class="revenue-icon">💎</span>
+              <span class="revenue-text">프리미엄 구독제 (월 9,900원)</span>
+            </div>
+            <div class="revenue-item">
+              <span class="revenue-icon">🏢</span>
+              <span class="revenue-text">B2B 기업 서비스</span>
+            </div>
+            <div class="revenue-item">
+              <span class="revenue-icon">📢</span>
+              <span class="revenue-text">타겟 광고 수익</span>
+            </div>
+            <div class="revenue-item">
+              <span class="revenue-icon">🎓</span>
+              <span class="revenue-text">교육기관 라이센스</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="business-card">
+          <h3><i class="fas fa-users"></i> 타겟 고객</h3>
+          <div class="target-segments">
+            <div class="segment-item">
+              <span class="segment-icon">👴👵</span>
+              <span class="segment-text">50-70대 노년층 (기억 보존)</span>
+            </div>
+            <div class="segment-item">
+              <span class="segment-icon">👨‍👩‍👧‍👦</span>
+              <span class="segment-text">30-50대 가족 (세대 간 연결)</span>
+            </div>
+            <div class="segment-item">
+              <span class="segment-icon">🏥</span>
+              <span class="segment-text">의료기관 (치매 예방)</span>
+            </div>
+            <div class="segment-item">
+              <span class="segment-icon">🎓</span>
+              <span class="segment-text">교육기관 (역사 보존)</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="business-card">
+          <h3><i class="fas fa-rocket"></i> 성장 전략</h3>
+          <div class="growth-strategy">
+            <div class="strategy-item">
+              <span class="strategy-number">1</span>
+              <span class="strategy-text">국내 시장 점유율 확대</span>
+            </div>
+            <div class="strategy-item">
+              <span class="strategy-number">2</span>
+              <span class="strategy-text">B2B 파트너십 확대</span>
+            </div>
+            <div class="strategy-item">
+              <span class="strategy-number">3</span>
+              <span class="strategy-text">글로벌 시장 진출</span>
+            </div>
+            <div class="strategy-item">
+              <span class="strategy-number">4</span>
+              <span class="strategy-text">AI 기술 고도화</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="community">
+    <div class="container">
+      <h2 class="section-title">👥 커뮤니티</h2>
+      <p style="text-align: center; font-size: 1.2rem; color: #666; margin-bottom: 3rem;">
+        다른 사용자들과 함께 기억을 나누고, 서로의 이야기를 통해 영감을 얻어보세요
+      </p>
+      
+      <div class="community-stats">
+        <div class="stat-card">
+          <div class="stat-number">1,234</div>
+          <div class="stat-label">활성 사용자</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">5,678</div>
+          <div class="stat-label">공유된 스토리</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">9,012</div>
+          <div class="stat-label">생성된 콘텐츠</div>
+        </div>
+      </div>
+
+      <div class="community-content">
+        <div class="community-filters">
+          <button class="filter-btn active" data-filter="all">전체</button>
+          <button class="filter-btn" data-filter="story">스토리</button>
+          <button class="filter-btn" data-filter="memory">추억</button>
+          <button class="filter-btn" data-filter="family">가족</button>
+          <button class="filter-btn" data-filter="travel">여행</button>
+        </div>
+
+        <div class="community-posts">
+          <div class="post-card" data-category="story">
+                         <div class="post-header">
+               <div class="post-author">
+                 <div class="author-avatar">
+                   <i class="fas fa-user"></i>
+                 </div>
+                 <div class="author-info">
+                   <div class="author-name">김미영</div>
+                   <div class="post-date">2시간 전</div>
+                 </div>
+               </div>
+               <div class="post-category">
+                 스토리
+                 <div class="verification-badge" title="암행어사 인증 완료">
+                   <i class="fas fa-check"></i>
+                 </div>
+               </div>
+             </div>
+            <div class="post-content">
+              <h3>할머니의 김치 담그기</h3>
+              <p>어릴 적 할머니와 함께 김치를 담그던 추억이 떠올라서 AI에게 이야기해줬어요. 할머니의 따뜻한 손길과 김치 맛이 그립네요. AI가 만들어준 스토리가 정말 감동적이었습니다.</p>
+              <div class="post-image">
+                <img src="https://via.placeholder.com/400x250/667eea/ffffff?text=할머니의+김치" alt="할머니의 김치" style="width: 100%; border-radius: 10px;">
+              </div>
+            </div>
+            <div class="post-actions">
+              <button class="action-btn"><i class="fas fa-heart"></i> 24</button>
+              <button class="action-btn"><i class="fas fa-comment"></i> 8</button>
+              <button class="action-btn"><i class="fas fa-share"></i> 공유</button>
+            </div>
+          </div>
+
+          <div class="post-card" data-category="memory">
+                         <div class="post-header">
+               <div class="post-author">
+                 <div class="author-avatar">
+                   <i class="fas fa-user"></i>
+                 </div>
+                 <div class="author-info">
+                   <div class="author-name">박준호</div>
+                   <div class="post-date">5시간 전</div>
+                 </div>
+               </div>
+               <div class="post-category">
+                 추억
+                 <div class="verification-badge" title="암행어사 인증 완료">
+                   <i class="fas fa-check"></i>
+                 </div>
+               </div>
+             </div>
+            <div class="post-content">
+              <h3>첫 월급으로 부모님께 선물</h3>
+              <p>첫 월급을 받고 부모님께 선물을 드렸던 순간을 AI에게 녹음해서 텍스트로 변환했어요. 그때의 설렘과 감동이 다시 살아나는 것 같았습니다. AI가 만들어준 이미지도 정말 아름다워요.</p>
+            </div>
+            <div class="post-actions">
+              <button class="action-btn"><i class="fas fa-heart"></i> 31</button>
+              <button class="action-btn"><i class="fas fa-comment"></i> 12</button>
+              <button class="action-btn"><i class="fas fa-share"></i> 공유</button>
+            </div>
+          </div>
+
+          <div class="post-card" data-category="family">
+            <div class="post-header">
+              <div class="post-author">
+                <div class="author-avatar">
+                  <i class="fas fa-user"></i>
+                </div>
+                <div class="author-info">
+                  <div class="author-name">이수진</div>
+                  <div class="post-date">1일 전</div>
+                </div>
+              </div>
+              <div class="post-category">가족</div>
+            </div>
+            <div class="post-content">
+              <h3>엄마의 목소리로 만든 스토리</h3>
+              <p>엄마의 목소리를 녹음해서 AI에게 전달했어요. 엄마가 들려주신 어린 시절 이야기가 텍스트로 변환되고, 그 내용을 바탕으로 아름다운 이미지도 만들어졌습니다. 가족의 소중함을 다시 한번 느꼈어요.</p>
+              <div class="post-image">
+                <img src="https://via.placeholder.com/400x250/10b981/ffffff?text=엄마의+이야기" alt="엄마의 이야기" style="width: 100%; border-radius: 10px;">
+              </div>
+            </div>
+            <div class="post-actions">
+              <button class="action-btn"><i class="fas fa-heart"></i> 45</button>
+              <button class="action-btn"><i class="fas fa-comment"></i> 15</button>
+              <button class="action-btn"><i class="fas fa-share"></i> 공유</button>
+            </div>
+          </div>
+
+          <div class="post-card" data-category="travel">
+            <div class="post-header">
+              <div class="post-author">
+                <div class="author-avatar">
+                  <i class="fas fa-user"></i>
+                </div>
+                <div class="author-info">
+                  <div class="author-name">최민수</div>
+                  <div class="post-date">2일 전</div>
+                </div>
+              </div>
+              <div class="post-category">여행</div>
+            </div>
+            <div class="post-content">
+              <h3>제주도 여행 추억</h3>
+              <p>친구들과 함께한 제주도 여행 이야기를 AI에게 들려줬어요. 바다를 보며 나눈 대화, 맛있는 음식, 아름다운 풍경들이 AI가 만들어준 콘텐츠로 다시 살아났습니다. 그때의 설렘과 기쁨이 떠올라요.</p>
+            </div>
+            <div class="post-actions">
+              <button class="action-btn"><i class="fas fa-heart"></i> 28</button>
+              <button class="action-btn"><i class="fas fa-comment"></i> 9</button>
+              <button class="action-btn"><i class="fas fa-share"></i> 공유</button>
+            </div>
+          </div>
+        </div>
+
+                 <div class="community-cta">
+           <h3>당신의 이야기도 공유해보세요!</h3>
+           <p>AI와 함께 만든 콘텐츠를 커뮤니티에 올리고 다른 사용자들과 소통해보세요.</p>
+           <button class="btn-primary" style="width: auto; padding: 1rem 2rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: fit-content;">
+             <i class="fas fa-plus"></i> 스토리 작성하기
+           </button>
+         </div>
+
+         <!-- 암행어사 인증 시스템 -->
+         <div class="inspector-system">
+           <div class="inspector-header">
+             <h3><i class="fas fa-shield-alt"></i> 암행어사 인증제도</h3>
+             <p>지역 암행어사들이 AI와 함께 기억의 진위여부를 검증하여 인증 마크를 부여합니다</p>
+           </div>
+           
+           <div class="inspector-stats">
+             <div class="inspector-stat">
+               <div class="stat-icon"><i class="fas fa-check-circle"></i></div>
+                                <div class="stat-info">
+                   <div class="stat-number">8920</div>
+                   <div class="stat-label">인증된 스토리</div>
+                 </div>
+             </div>
+             <div class="inspector-stat">
+               <div class="stat-icon"><i class="fas fa-user-shield"></i></div>
+               <div class="stat-info">
+                 <div class="stat-number">47</div>
+                 <div class="stat-label">활성 암행어사</div>
+               </div>
+             </div>
+             <div class="inspector-stat">
+               <div class="stat-icon"><i class="fas fa-award"></i></div>
+               <div class="stat-info">
+                 <div class="stat-number">98.5%</div>
+                 <div class="stat-label">인증 신뢰도</div>
+               </div>
+             </div>
+           </div>
+
+           <div class="inspector-process">
+             <h4>인증 과정</h4>
+             <div class="process-steps">
+               <div class="process-step">
+                 <div class="step-number">1</div>
+                 <div class="step-content">
+                   <h5>스토리 제출</h5>
+                   <p>사용자가 기억을 바탕으로 스토리를 작성하여 제출합니다</p>
+                 </div>
+               </div>
+               <div class="process-step">
+                 <div class="step-number">2</div>
+                 <div class="step-content">
+                   <h5>지역구 증인 선정</h5>
+                   <p>이야기에 대해 자신의 지역구 증인 또는 지인 2명을 증인으로 선정합니다</p>
+                 </div>
+               </div>
+               <div class="process-step">
+                 <div class="step-number">3</div>
+                 <div class="step-content">
+                   <h5>AI 1차 검증</h5>
+                   <p>AI가 스토리의 일관성과 논리성을 분석하고 증인들의 확인을 요청합니다</p>
+                 </div>
+               </div>
+               <div class="process-step">
+                 <div class="step-number">4</div>
+                 <div class="step-content">
+                   <h5>증인 채택 버튼</h5>
+                   <p>선정된 증인들이 채택 버튼을 통해 스토리의 진위를 확인합니다</p>
+                 </div>
+               </div>
+               <div class="process-step">
+                 <div class="step-number">5</div>
+                 <div class="step-content">
+                   <h5>자타공인 기억자산</h5>
+                   <p>증인들의 채택이 완료되면 자타공인 기억자산으로 인증 마크가 부여됩니다</p>
+                 </div>
+               </div>
+               <div class="process-step">
+                 <div class="step-number">6</div>
+                 <div class="step-content">
+                   <h5>암행어사 2차 검증</h5>
+                   <p>지역 암행어사가 최종 검증을 통해 기억의 진위여부를 최종 확인하고 공식 인증을 완료합니다</p>
+                 </div>
+               </div>
+             </div>
+           </div>
+         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 경쟁 우위 및 차별화 섹션 추가 -->
+  <section id="competitive-advantage">
+    <div class="container">
+      <h2 class="section-title">🏆 경쟁 우위 및 차별화</h2>
+      
+      <div class="advantage-grid">
+        <div class="advantage-card">
+          <div class="advantage-icon">🇰🇷</div>
+          <h3>한국 문화 특화</h3>
+          <p>암행어사 인증제도라는 한국 고유의 문화를 활용한 독특한 신뢰 시스템을 구축했습니다.</p>
+          <div class="advantage-features">
+            <span class="feature-tag">문화적 차별화</span>
+            <span class="feature-tag">신뢰성 확보</span>
+            <span class="feature-tag">지역 특화</span>
+          </div>
+        </div>
+
+        <div class="advantage-card">
+          <div class="advantage-icon">🎯</div>
+          <h3>정확한 타겟팅</h3>
+          <p>고령화 사회의 핵심 니즈인 기억 보존에 특화하여 명확한 타겟 고객층을 확보했습니다.</p>
+          <div class="advantage-features">
+            <span class="feature-tag">시장 니즈</span>
+            <span class="feature-tag">고객 특화</span>
+            <span class="feature-tag">사회적 가치</span>
+          </div>
+        </div>
+
+        <div class="advantage-card">
+          <div class="advantage-icon">🔬</div>
+          <h3>기술적 융합</h3>
+          <p>STT, TTS, 이미지 생성 등 다중 AI 기술을 통합하여 독특한 사용자 경험을 제공합니다.</p>
+          <div class="advantage-features">
+            <span class="feature-tag">AI 통합</span>
+            <span class="feature-tag">기술 혁신</span>
+            <span class="feature-tag">사용자 경험</span>
+          </div>
+        </div>
+
+        <div class="advantage-card">
+          <div class="advantage-icon">💝</div>
+          <h3>감정적 연결</h3>
+          <p>가족과 추억이라는 보편적 감정을 활용하여 강력한 감정적 연결을 구축합니다.</p>
+          <div class="advantage-features">
+            <span class="feature-tag">감정 마케팅</span>
+            <span class="feature-tag">가족 가치</span>
+            <span class="feature-tag">세대 연결</span>
+          </div>
+        </div>
+
+        <div class="advantage-card">
+          <div class="advantage-icon">📈</div>
+          <h3>확장 가능성</h3>
+          <p>교육, 의료, 기업 등 다양한 분야로 확장 가능한 플랫폼 구조를 갖추고 있습니다.</p>
+          <div class="advantage-features">
+            <span class="feature-tag">B2B 확장</span>
+            <span class="feature-tag">글로벌 진출</span>
+            <span class="feature-tag">다각화</span>
+          </div>
+        </div>
+
+        <div class="advantage-card">
+          <div class="advantage-icon">🛡️</div>
+          <h3>지속가능성</h3>
+          <p>구독제, 광고, B2B 등 다각화된 수익 모델로 안정적인 비즈니스 구조를 구축했습니다.</p>
+          <div class="advantage-features">
+            <span class="feature-tag">수익 다각화</span>
+            <span class="feature-tag">안정성</span>
+            <span class="feature-tag">성장성</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="reviews">
+  <div class="container">
+    <h2 class="section-title">💬 사용자 리뷰</h2>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <p>"기억의 집 덕분에 돌아가신 할머니 이야기를 글과 그림으로 남길 수 있었어요. AI가 할머니의 목소리를 텍스트로 변환해주고, 그 내용을 바탕으로 아름다운 이미지도 만들어주었습니다."</p>
+        <div class="review-author">- 김미영 (40대, 주부)</div>
+      </div>
+      <div class="review-card">
+        <p>"엄마의 목소리를 저장하고 텍스트로 바꾸는 기능이 정말 감동적이었습니다. 평소 말하기 어려웠던 이야기들을 자연스럽게 녹음해서 콘텐츠로 만들 수 있어서 가족 모두가 좋아합니다."</p>
+        <div class="review-author">- 박준호 (30대, 회사원)</div>
+      </div>
+      <div class="review-card">
+        <p>"자신의 경험을 스토리로 만드는 기능이 정말 유용해요. AI가 제 이야기를 더욱 감동적이고 아름답게 표현해주어서 친구들과 공유할 때마다 좋은 반응을 받고 있습니다."</p>
+        <div class="review-author">- 이수진 (20대, 대학생)</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-logo">🏠 기억의 집</div>
+      <div class="social-links">
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+    <p style="margin-top: 2rem; opacity: 0.8;">&copy; 2025 기억의 집. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+// Smooth scrolling for navigation links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    });
+});
+
+// Add loading states to buttons
+document.querySelectorAll('.btn-primary').forEach(button => {
+    button.addEventListener('click', function() {
+        this.classList.add('loading');
+        this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> 처리중...';
+        
+        // Simulate processing
+        setTimeout(() => {
+            this.classList.remove('loading');
+            this.classList.add('success');
+            this.innerHTML = '<i class="fas fa-check"></i> 완료!';
+            
+            setTimeout(() => {
+                this.classList.remove('success');
+                this.innerHTML = this.getAttribute('data-original') || this.innerHTML;
+            }, 2000);
+        }, 2000);
+    });
+});
+
+// Header scroll effect
+window.addEventListener('scroll', function() {
+    const header = document.querySelector('header');
+    if (window.scrollY > 100) {
+        header.style.background = 'rgba(255, 255, 255, 0.98)';
+    } else {
+        header.style.background = 'rgba(255, 255, 255, 0.95)';
+    }
+});
+
+// File input styling
+document.getElementById('audioFile').addEventListener('change', function() {
+    const label = document.querySelector('.file-input-label');
+    if (this.files.length > 0) {
+        label.innerHTML = '<i class="fas fa-check"></i> ' + this.files[0].name;
+        label.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+    } else {
+        label.innerHTML = '<i class="fas fa-cloud-upload-alt"></i> 파일 선택하기';
+        label.style.background = 'linear-gradient(135deg, #667eea, #764ba2)';
+    }
+});
+
+// Chat functionality
+function sendMessage() {
+    const input = document.getElementById('chatInput');
+    const message = input.value.trim();
+    
+    if (message === '') return;
+    
+    const chatMessages = document.getElementById('chatMessages');
+    
+    // Add user message
+    const userMessage = document.createElement('div');
+    userMessage.className = 'message user';
+    userMessage.innerHTML = `
+        <div class="message-content">${message}</div>
+        <div class="message-avatar">
+            <i class="fas fa-user"></i>
+        </div>
+    `;
+    chatMessages.appendChild(userMessage);
+    
+    // Clear input
+    input.value = '';
+    
+    // Scroll to bottom
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+    
+    // Show typing indicator
+    const typingIndicator = document.createElement('div');
+    typingIndicator.className = 'message ai';
+    typingIndicator.innerHTML = `
+        <div class="message-avatar">
+            <i class="fas fa-robot"></i>
+        </div>
+        <div class="typing-indicator">
+            <div class="typing-dot"></div>
+            <div class="typing-dot"></div>
+            <div class="typing-dot"></div>
+        </div>
+    `;
+    chatMessages.appendChild(typingIndicator);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+    
+    // Simulate AI response
+    setTimeout(() => {
+        chatMessages.removeChild(typingIndicator);
+        
+        const aiResponses = [
+            "정말 흥미로운 이야기네요! 그 경험을 바탕으로 아름다운 스토리를 만들어드릴게요.",
+            "감동적인 순간이었군요. 이런 기억들을 콘텐츠로 만들어보는 건 어떨까요?",
+            "멋진 경험이네요! AI가 당신의 이야기를 더욱 풍부하게 만들어드릴 수 있어요.",
+            "그런 순간들이 정말 소중하죠. 함께 아름다운 콘텐츠로 만들어보시죠!",
+            "당신의 이야기가 정말 특별해요. AI와 함께 더욱 감동적인 내용으로 발전시켜보세요."
+        ];
+        
+        const randomResponse = aiResponses[Math.floor(Math.random() * aiResponses.length)];
+        
+        const aiMessage = document.createElement('div');
+        aiMessage.className = 'message ai';
+        aiMessage.innerHTML = `
+            <div class="message-avatar">
+                <i class="fas fa-robot"></i>
+            </div>
+            <div class="message-content">${randomResponse}</div>
+        `;
+        chatMessages.appendChild(aiMessage);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }, 1500);
+}
+
+// Enter key to send message
+document.getElementById('chatInput').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+        sendMessage();
+    }
+});
+
+// Community filter functionality
+document.querySelectorAll('.filter-btn').forEach(button => {
+    button.addEventListener('click', function() {
+        // Remove active class from all buttons
+        document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+        // Add active class to clicked button
+        this.classList.add('active');
+        
+        const filter = this.getAttribute('data-filter');
+        const posts = document.querySelectorAll('.post-card');
+        
+        posts.forEach(post => {
+            if (filter === 'all' || post.getAttribute('data-category') === filter) {
+                post.style.display = 'block';
+                post.style.animation = 'fadeInUp 0.6s ease-out';
+            } else {
+                post.style.display = 'none';
+            }
+        });
+    });
+});
+
+// Like button functionality
+document.querySelectorAll('.action-btn').forEach(button => {
+    button.addEventListener('click', function() {
+        if (this.innerHTML.includes('fa-heart')) {
+            const currentText = this.innerHTML;
+            const currentLikes = parseInt(currentText.match(/\d+/)[0]);
+            this.innerHTML = `<i class="fas fa-heart" style="color: #ff6b6b;"></i> ${currentLikes + 1}`;
+        }
+    });
+});
+</script>
+
+</body>
+</html>
