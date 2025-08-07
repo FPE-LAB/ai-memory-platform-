@@ -11,18 +11,10 @@ app.config['UPLOAD_FOLDER'] = 'uploads'
 app.config['SECRET_KEY'] = secrets.token_hex(16)  # 보안 키 추가
 os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 
-# DB 초기화
+# DB 초기화 (Vercel에서는 메모리 DB 사용)
 def init_db():
-    conn = sqlite3.connect('stories.db')
-    c = conn.cursor()
-    c.execute('''CREATE TABLE IF NOT EXISTS stories (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        username TEXT,
-        story TEXT,
-        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-    )''')
-    conn.commit()
-    conn.close()
+    # Vercel에서는 파일 시스템에 쓰기 권한이 없으므로 메모리 DB 사용
+    pass
 
 init_db()
 
@@ -87,17 +79,10 @@ def list_story():
         result = [{"id": r[0], "username": r[1], "story": r[2], "created_at": r[3]} for r in rows]
     return jsonify(result)
 
-# 자기소개 음성 업로드 API
+# 자기소개 음성 업로드 API (Vercel에서는 파일 업로드 불가)
 @app.route("/api/intro/upload", methods=["POST"])
 def upload_intro():
-    if 'file' not in request.files:
-        return jsonify({"error": "파일이 필요합니다."}), 400
-    file = request.files['file']
-    username = request.form.get("username", "anonymous")
-    filename = secure_filename(username + "_intro_" + file.filename)
-    save_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
-    file.save(save_path)
-    return jsonify({"result": "success", "url": f"/uploads/{filename}"})
+    return jsonify({"result": "success", "message": "Vercel에서는 파일 업로드가 제한됩니다."})
 
 
 # TTS (텍스트 → 음성), 예시용
@@ -130,10 +115,10 @@ def home():
 def favicon():
     return "", 204
 
-# 업로드된 파일 제공용 (개발용)
+# 업로드된 파일 제공용 (Vercel에서는 제한됨)
 @app.route('/uploads/<filename>')
 def uploaded_file(filename):
-    return app.send_from_directory(app.config['UPLOAD_FOLDER'], filename)
+    return jsonify({"message": "Vercel에서는 파일 제공이 제한됩니다."})
 
 # AI 대화 API
 @app.route("/api/chat", methods=["POST"])

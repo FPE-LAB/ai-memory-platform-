@@ -9,7 +9,12 @@
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "server.py"
+      "dest": "/server.py"
     }
-  ]
+  ],
+  "functions": {
+    "server.py": {
+      "runtime": "python3.9"
+    }
+  }
 }
