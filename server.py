@@ -153,5 +153,8 @@ def chat():
 
     return jsonify({"response": ai_response})
 
+# Vercel 배포를 위한 app 객체 export
+app.debug = False
+
 if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0', port=3000)
