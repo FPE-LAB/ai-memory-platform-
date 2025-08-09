@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>기억의 집 - AI 콘텐츠 플랫폼</title>
+
+  <!-- SEO / Social -->
+  <meta name="description" content="기억의 집 — AI로 기억을 스토리·오디오·이미지로 만들어 세대와 지역을 잇는 콘텐츠 플랫폼. 암행어사 인증으로 신뢰까지.">
+  <link rel="canonical" href="https://example.com/">
+  <meta property="og:title" content="기억의 집 - AI 콘텐츠 플랫폼">
+  <meta property="og:description" content="나의 기억을 AI로 보존하고 공유해요. 암행어사 인증으로 신뢰까지.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://example.com/og.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Fonts / Icons (perf) -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet"></noscript>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+  <style>
+    :root{
+      --outer-pad: clamp(16px, 3vw, 28px);
+      --section-pad-y: clamp(64px, 9vw, 96px);
+      --card-radius: 20px;
+      --shadow-1: 0 6px 20px rgba(0,0,0,0.08);
+      --shadow-2: 0 12px 30px rgba(0,0,0,0.1);
+      --brand: #3498db;
+      --ink: #2c3e50;
+      --muted: #7f8c8d;
+      --bg-soft: #f6f8fb;
+      --line: #e6eaf0;
+    }
+
+    *{margin:0;padding:0;box-sizing:border-box}
+    html,body{scroll-behavior:smooth}
+    body{
+      font-family:'Noto Sans KR', system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, 'Apple SD Gothic Neo', '맑은 고딕', 'Noto Sans KR', sans-serif;
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      color: var(--ink);
+      line-height: 1.65;
+    }
+
+    .container{max-width:1200px;margin:0 auto;padding:0 var(--outer-pad)}
+
+    .skip-link{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
+    .skip-link:focus{left:var(--outer-pad);top:var(--outer-pad);width:auto;height:auto;padding:.75rem 1rem;background:#111;color:#fff;border-radius:8px;z-index:10000;outline:none}
+
+    header{background:rgba(255,255,255,.95);backdrop-filter:blur(8px);box-shadow:var(--shadow-1);position:sticky;top:0;width:100%;z-index:1000}
+    .header-content{display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:64px}
+    .logo{font-size:1.6rem;font-weight:700;color:var(--ink);text-decoration:none;white-space:nowrap;flex-shrink:0}
+    .nav-links{display:flex;gap:.5rem;flex-wrap:wrap;align-items:center}
+    .nav-link{color:var(--ink);text-decoration:none;font-weight:500;padding:.5rem .9rem;border-radius:999px;transition:all .2s ease;border:1px solid transparent}
+    .nav-link:hover{background:#eef6fd;color:#0f4d78;border-color:#d6e9f9}
+    .nav-cta{background:var(--brand);color:#fff;border:none;padding:.55rem 1.1rem;border-radius:999px;cursor:pointer;font-weight:600}
+    .nav-cta.outline{background:transparent;color:var(--brand);border:2px solid var(--brand)}
+    .nav-cta:focus-visible,.nav-link:focus-visible{outline:3px solid #a7d3f7;outline-offset:2px}
+
+    #hero{padding:calc(var(--section-pad-y) + 32px) 0 var(--section-pad-y);text-align:center;background:white;position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+    .hero-content h1{font-size:clamp(2.2rem,4vw,3.4rem);font-weight:800;margin:16px 0 12px;color:var(--ink);letter-spacing:-0.02em}
+    .hero-content p{font-size:clamp(1.05rem,1.6vw,1.25rem);color:#34495e;margin:0 auto 1.8rem;max-width:760px}
+    .cta-button{background:var(--brand);color:#fff;border:none;padding:.9rem 1.6rem;font-size:1rem;font-weight:700;border-radius:999px;cursor:pointer;transition:transform .15s ease,box-shadow .2s ease;box-shadow:0 8px 20px rgba(52,152,219,.25)}
+    .cta-button:hover{transform:translateY(-1px);box-shadow:0 12px 26px rgba(52,152,219,.35)}
+
+    section{padding:var(--section-pad-y) 0}
+    .section-title{text-align:center;font-size:2rem;font-weight:800;margin-bottom:2.2rem;color:var(--ink);letter-spacing:-0.01em}
+    .subtle{color:var(--muted)}
+    .spacer{height:8px}
+
+    .card{background:white;border:1px solid var(--line);padding:clamp(20px,3.2vw,32px);border-radius:var(--card-radius);box-shadow:var(--shadow-1)}
+    .grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(16px,2.6vw,24px)}
+    .grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:clamp(16px,2.6vw,24px)}
+
+    #features,#competitive-advantage,#demo,#community,#business-model,#memory-house,#local-creators,#inspector{background:white}
+    #business-model,#demo{background:var(--bg-soft)}
+
+    .feature-card,.business-card,.advantage-card,.demo-card{border-radius:var(--card-radius);box-shadow:var(--shadow-1);border:1px solid var(--line)}
+    .feature-icon{font-size:2.2rem;margin-bottom:1rem;color:var(--brand)}
+
+    .chat-container{background:white;border-radius:var(--card-radius);box-shadow:var(--shadow-1);overflow:hidden;margin-top:1.2rem;border:1px solid var(--line)}
+    .chat-header{background:var(--brand);color:white;padding:1rem 1.2rem;display:flex;align-items:center;gap:.6rem}
+    .chat-header h3{margin:0;font-size:1.1rem}
+    .chat-messages{height:380px;overflow-y:auto;padding:1.2rem;background:var(--bg-soft)}
+    .message{margin-bottom:.9rem;display:flex;gap:.8rem}
+    .message.user{flex-direction:row-reverse}
+    .message-avatar{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+    .message.user .message-avatar{background:var(--brand);color:#fff}
+    .message.ai .message-avatar{background:linear-gradient(135deg,#10b981,#059669);color:#fff}
+    .message-content{background:white;padding:.8rem 1rem;border-radius:14px;box-shadow:0 2px 8px rgba(0,0,0,.06);max-width:70%}
+    .message.user .message-content{background:var(--brand);color:#fff}
+    .chat-input{display:flex;gap:.6rem;padding:1rem;background:white;border-top:1px solid var(--line)}
+    .chat-input input{flex:1;padding:.8rem 1rem;border:2px solid #d6dbe2;border-radius:999px;font-size:1rem;background:white}
+    .chat-input input:focus{outline:none;border-color:#a7d3f7;box-shadow:0 0 0 3px rgba(52,152,219,.15)}
+    .chat-send-btn{background:var(--brand);color:#fff;border:none;padding:.8rem 1rem;border-radius:50%;cursor:pointer}
+
+    .community-filters{display:flex;justify-content:center;gap:.5rem;margin-bottom:1.5rem;flex-wrap:wrap}
+    .filter-btn{background:white;border:2px solid #d6dbe2;color:#667085;padding:.6rem 1rem;border-radius:999px;cursor:pointer;font-weight:600}
+    .filter-btn:hover,.filter-btn.active{background:var(--brand);color:#fff;border-color:var(--brand)}
+    .community-posts{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:clamp(16px,2.6vw,24px)}
+    .post-card{background:white;border-radius:var(--card-radius);box-shadow:var(--shadow-1);overflow:hidden;border:1px solid var(--line)}
+    .post-header{display:flex;justify-content:space-between;align-items:center;padding:1rem 1.2rem;border-bottom:1px solid var(--line)}
+    .author-avatar{width:36px;height:36px;border-radius:50%;background:var(--brand);display:flex;align-items:center;justify-content:center;color:#fff;font-size:1rem}
+    .post-category{background:var(--brand);color:white;padding:.35rem .7rem;border-radius:999px;font-size:.85rem;font-weight:700;display:flex;align-items:center;gap:.4rem}
+    .verification-badge{display:inline-flex;align-items:center;justify-content:center;background:#1d9bf0;color:#fff;width:16px;height:16px;border-radius:50%;font-size:.6rem;box-shadow:0 1px 3px rgba(0,0,0,.2)}
+    .post-content{padding:1.2rem}
+    .post-actions{display:flex;gap:.5rem;padding:1rem 1.2rem;border-top:1px solid var(--line)}
+    .action-btn{background:none;border:none;color:#667085;cursor:pointer;padding:.4rem .7rem;border-radius:999px;display:flex;align-items:center;gap:.4rem;font-size:.9rem}
+    .action-btn:hover{background:#eef2f7;color:var(--brand)}
+
+    .inspector-system{background:linear-gradient(135deg,#f8f9fa,#e9ecef);border-radius:var(--card-radius);padding:1.6rem;margin-top:1.2rem;border:2px solid #667eea}
+    .inspector-header{text-align:center;margin-bottom:1rem}
+    .inspector-process{background:white;border-radius:14px;padding:1.4rem;box-shadow:var(--shadow-1)}
+    .process-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem}
+    .process-step{display:flex;align-items:flex-start;gap:.7rem;padding:.8rem;border-radius:12px;background:linear-gradient(135deg,#f8f9fa,#e9ecef)}
+    .step-number{background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.85rem;flex-shrink:0}
+
+    .market-stats,.revenue-streams,.target-segments,.growth-strategy{display:flex;flex-direction:column;gap:.7rem}
+    .market-stat,.revenue-item,.segment-item,.strategy-item{display:flex;align-items:center;gap:.7rem;padding:.8rem;background:#f3f5f8;border-radius:12px;border:1px solid #e1e6ee}
+
+    #application-sections{background:white;border-top:1px solid var(--line)}
+    .kpi{display:flex;align-items:center;gap:.6rem;padding:.6rem .8rem;background:#f7fafc;border:1px solid #e6edf5;border-radius:12px;font-weight:600}
+    .timeline{position:relative;padding-left:20px}
+    .timeline::before{content:"";position:absolute;left:8px;top:4px;bottom:4px;width:2px;background:#d9e6f5}
+    .tl-item{position:relative;margin-bottom:12px}
+    .tl-item::before{content:"";position:absolute;left:-2px;top:6px;width:10px;height:10px;border-radius:50%;background:var(--brand)}
+    .risk{display:flex;gap:.6rem;align-items:flex-start;background:#fff7f7;border:1px solid #ffd7d7;border-radius:12px;padding:.8rem}
+    .mitigation{display:flex;gap:.6rem;align-items:flex-start;background:#f4fff7;border:1px solid #cfeedd;border-radius:12px;padding:.8rem}
+
+    footer{background:#2c3e50;color:white;text-align:center;padding:56px 0;margin-top:8px}
+    .footer-content{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+    .footer-logo{font-size:1.3rem;font-weight:800}
+
+    @media (max-width:880px){.nav-links{display:none}.message-content{max-width:85%}}
+    @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.cta-button:hover,.action-btn:hover,.post-card:hover,.advantage-card:hover{transform:none!important;box-shadow:var(--shadow-1)!important}}
+  </style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">본문 바로가기</a>
+
+<header>
+  <div class="container">
+    <div class="header-content">
+      <a href="#" class="logo" aria-label="기억의 집 홈">🏠 기억의 집</a>
+      <nav class="nav-links" aria-label="주요 메뉴">
+        <a class="nav-link" href="#features">소개</a>
+        <a class="nav-link" href="#business-model">비즈니스</a>
+        <a class="nav-link" href="#competitive-advantage">차별화</a>
+        <a class="nav-link" href="#demo">체험하기</a>
+        <a class="nav-link" href="#chat">AI 채팅</a>
+        <a class="nav-link" href="#community">커뮤니티</a>
+        <a class="nav-link" href="#memory-house">기억의 집</a>
+        <button class="nav-cta" type="button" onclick="alert('로그인 기능은 데모에서 준비중입니다')">로그인</button>
+        <button class="nav-cta outline" type="button" onclick="alert('회원가입 기능은 데모에서 준비중입니다')">회원가입</button>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <section id="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1>기억을 보존하는<br>AI 콘텐츠 플랫폼</h1>
+        <p>소중한 기억을 AI로 영원히 보존하고, 세대와 지역을 잇는 새로운 이야기 생태계를 만듭니다.</p>
+        <button class="cta-button" type="button" onclick="document.getElementById('demo').scrollIntoView({behavior:'smooth'})"><i class="fas fa-play"></i> 지금 시작하기</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="features">
+    <div class="container">
+      <h2 class="section-title">🌟 창업 아이디어 핵심 가치</h2>
+      <div class="grid-3">
+        <div class="feature-card card"><div class="feature-icon">💡</div><h3>독창적인 시장 창출</h3><p class="subtle">기억 보존이라는 감정 자산을 AI로 전환하는 신시장 개척</p></div>
+        <div class="feature-card card"><div class="feature-icon">👨‍👩‍👧‍👦</div><h3>세대 연결</h3><p class="subtle">가족의 목소리·사진·스토리를 한 화면에</p></div>
+        <div class="feature-card card"><div class="feature-icon">🏥</div><h3>사회적 가치</h3><p class="subtle">치매 예방·지역 기록·디지털 포용성</p></div>
+        <div class="feature-card card"><div class="feature-icon">💰</div><h3>다각 수익</h3><p class="subtle">크레딧·구독·B2B·광고</p></div>
+        <div class="feature-card card"><div class="feature-icon">🌏</div><h3>확장성</h3><p class="subtle">보편적 감정(추억) 기반 글로벌 전개</p></div>
+        <div class="feature-card card"><div class="feature-icon">🔬</div><h3>기술 융합</h3><p class="subtle">STT·GPT·TTS·이미지 생성 통합 파이프라인</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="demo">
+    <div class="container">
+      <h2 class="section-title">🔍 콘텐츠 생성 체험</h2>
+      <div class="grid-3">
+        <div class="demo-card card"><h3><i class="fas fa-pen-fancy"></i> 스토리 생성</h3><div class="form-group"><label for="memoInput">기억에 남는 순간을 적어보세요:</label><textarea id="memoInput" class="form-control" placeholder="예: 첫 월급으로 부모님께 선물했던 날…" rows="4"></textarea></div><button class="btn-primary" type="button"><i class="fas fa-magic"></i> 스토리 생성하기</button></div>
+        <div class="demo-card card"><h3><i class="fas fa-microphone"></i> 음성 파일 업로드</h3><div class="form-group"><label for="audioFileInput">음성 파일을 업로드하세요:</label><div class="file-input-wrapper"><input type="file" id="audioFileInput" accept="audio/*" /><label for="audioFileInput" class="file-input-label"><i class="fas fa-cloud-upload-alt"></i> 파일 선택하기</label></div></div><button class="btn-primary" type="button"><i class="fas fa-language"></i> 텍스트로 변환하기</button></div>
+        <div class="demo-card card"><h3><i class="fas fa-image"></i> 이미지 생성</h3><div class="form-group"><label for="imgPrompt">생성하고 싶은 이미지를 설명해주세요:</label><input id="imgPrompt" type="text" class="form-control" placeholder="예: 붉은 노을 아래 걷는 두 사람…" /></div><button class="btn-primary" type="button"><i class="fas fa-palette"></i> 이미지 생성하기</button></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="chat">
+    <div class="container">
+      <h2 class="section-title">💬 AI와 대화하기</h2>
+      <div class="chat-container"><div class="chat-header"><i class="fas fa-robot"></i><h3>AI 어시스턴트</h3></div><div class="chat-messages" id="chatMessages" aria-live="polite"><div class="message ai"><div class="message-avatar"><i class="fas fa-robot"></i></div><div class="message-content">안녕하세요! 기억의 집 AI입니다. 당신의 이야기를 들려주세요.</div></div></div><div class="chat-input"><input type="text" id="chatInput" placeholder="메시지를 입력하세요…" aria-label="채팅 입력"/><button class="chat-send-btn" type="button" onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button></div></div>
+    </div>
+  </section>
+
+  <section id="local-creators">
+    <div class="container">
+      <div class="inspector-system"><div class="inspector-header"><h3><i class="fas fa-users"></i> 지역 기반 크리에이터 제도</h3><p class="subtle">로컬 이야기 발굴 → 커뮤니티 검수 → 수익 분배</p></div><div class="inspector-process"><h4 class="section-title" style="font-size:1.4rem;margin-bottom:1rem">참여 과정</h4><div class="process-steps"><div class="process-step"><div class="step-number">1</div><div class="step-content"><h5>크리에이터 신청</h5><p>프로필·포트폴리오 제출</p></div></div><div class="process-step"><div class="step-number">2</div><div class="step-content"><h5>활동 지역 인증</h5><p>거주/활동 증빙</p></div></div><div class="process-step"><div class="step-number">3</div><div class="step-content"><h5>기획·제작</h5><p>지역 기억/인물/장소 스토리</p></div></div><div class="process-step"><div class="step-number">4</div><div class="step-content"><h5>검수·피드백</h5><p>커뮤니티·암행어사 협업</p></div></div><div class="process-step"><div class="step-number">5</div><div class="step-content"><h5>발행·분배</h5><p>콘텐츠 발행·크레딧/수익 분배</p></div></div><div class="process-step"><div class="step-number">6</div><div class="step-content"><h5>등급·혜택</h5><p>기여도 기반 리워드</p></div></div></div></div></div>
+    </div>
+  </section>
+
+  <section id="inspector">
+    <div class="container">
+      <div class="inspector-system"><div class="inspector-header"><h3><i class="fas fa-shield-alt"></i> 암행어사 인증제도</h3><p class="subtle">AI 분석 + 지역 증인 + 암행어사 2차 검증</p></div><div class="inspector-process"><h4 class="section-title" style="font-size:1.4rem;margin-bottom:1rem">인증 과정</h4><div class="process-steps"><div class="process-step"><div class="step-number">1</div><div class="step-content"><h5>스토리 제출</h5><p>사용자 이야기 업로드</p></div></div><div class="process-step"><div class="step-number">2</div><div class="step-content"><h5>증인 선정</h5><p>지역 증인 2명 확보</p></div></div><div class="process-step"><div class="step-number">3</div><div class="step-content"><h5>AI 1차 검증</h5><p>일관성·사실 가능성 분석</p></div></div><div class="process-step"><div class="step-number">4</div><div class="step-content"><h5>증인 채택</h5><p>버튼 승인으로 확인</p></div></div><div class="process-step"><div class="step-number">5</div><div class="step-content"><h5>인증 부여</h5><p>자타공인 기억자산 배지</p></div></div><div class="process-step"><div class="step-number">6</div><div class="step-content"><h5>암행어사 2차</h5><p>최종 검증·공식 인증</p></div></div></div></div></div>
+    </div>
+  </section>
+
+  <section id="community">
+    <div class="container">
+      <h2 class="section-title">👥 커뮤니티</h2>
+      <p class="subtle" style="text-align:center;margin-bottom:1.4rem">서로의 이야기를 듣고, 영감을 나눠요.</p>
+      <div class="community-filters"><button class="filter-btn active" data-filter="all" type="button">전체</button><button class="filter-btn" data-filter="story" type="button">스토리</button><button class="filter-btn" data-filter="memory" type="button">추억</button><button class="filter-btn" data-filter="family" type="button">가족</button><button class="filter-btn" data-filter="travel" type="button">여행</button></div>
+      <div class="community-posts">
+        <div class="post-card" data-category="story"><div class="post-header"><div class="post-author"><div class="author-avatar"><i class="fas fa-user"></i></div><div class="author-info"><div class="author-name">김미영</div><div class="post-date subtle">2시간 전</div></div></div><div class="post-category">스토리 <span class="verification-badge" title="암행어사 인증"><i class="fas fa-check"></i></span></div></div><div class="post-content"><h3>할머니의 김치 담그기</h3><p class="subtle">어릴 적 할머니와 함께 김치를 담그던 추억을 AI로 기록했어요.</p></div><div class="post-actions"><button class="action-btn btn-like" type="button"><i class="fas fa-heart"></i> 24</button><button class="action-btn" type="button"><i class="fas fa-comment"></i> 8</button><button class="action-btn" type="button"><i class="fas fa-share"></i> 공유</button></div></div>
+        <div class="post-card" data-category="memory"><div class="post-header"><div class="post-author"><div class="author-avatar"><i class="fas fa-user"></i></div><div class="author-info"><div class="author-name">박준호</div><div class="post-date subtle">5시간 전</div></div></div><div class="post-category">추억 <span class="verification-badge" title="암행어사 인증"><i class="fas fa-check"></i></span></div></div><div class="post-content"><h3>첫 월급으로 부모님께 선물</h3><p class="subtle">녹음 → 텍스트 변환 → 스토리로 만들었어요.</p></div><div class="post-actions"><button class="action-btn btn-like" type="button"><i class="fas fa-heart"></i> 31</button><button class="action-btn" type="button"><i class="fas fa-comment"></i> 12</button><button class="action-btn" type="button"><i class="fas fa-share"></i> 공유</button></div></div>
+        <div class="post-card" data-category="family"><div class="post-header"><div class="post-author"><div class="author-avatar"><i class="fas fa-user"></i></div><div class="author-info"><div class="author-name">이수진</div><div class="post-date subtle">1일 전</div></div></div><div class="post-category">가족</div></div><div class="post-content"><h3>엄마의 목소리로 만든 스토리</h3><p class="subtle">음성 녹음으로 가족 앨범이 더 따뜻해졌어요.</p></div><div class="post-actions"><button class="action-btn btn-like" type="button"><i class="fas fa-heart"></i> 45</button><button class="action-btn" type="button"><i class="fas fa-comment"></i> 15</button><button class="action-btn" type="button"><i class="fas fa-share"></i> 공유</button></div></div>
+        <div class="post-card" data-category="travel"><div class="post-header"><div class="post-author"><div class="author-avatar"><i class="fas fa-user"></i></div><div class="author-info"><div class="author-name">최민수</div><div class="post-date subtle">2일 전</div></div></div><div class="post-category">여행</div></div><div class="post-content"><h3>제주도 여행 추억</h3><p class="subtle">파도 소리까지 기록해 다시 듣고 있습니다.</p></div><div class="post-actions"><button class="action-btn btn-like" type="button"><i class="fas fa-heart"></i> 28</button><button class="action-btn" type="button"><i class="fas fa-comment"></i> 9</button><button class="action-btn" type="button"><i class="fas fa-share"></i> 공유</button></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="business-model">
+    <div class="container">
+      <h2 class="section-title">📊 시장 분석 및 비즈니스 모델</h2>
+      <div class="grid-2">
+        <div class="business-card card"><h3><i class="fas fa-chart-line"></i> 시장 동향</h3><div class="market-stats"><div class="market-stat"><span class="stat-number">1,000만+</span><span class="stat-label">잠재 고객</span></div><div class="market-stat"><span class="stat-number">1조원+</span><span class="stat-label">국내 시장</span></div></div><p class="subtle">1인 가구 증가·UGC 수요 확대</p></div>
+        <div class="business-card card"><h3><i class="fas fa-coins"></i> 수익 모델</h3><div class="revenue-streams"><div class="revenue-item"><span class="revenue-icon">🍃</span><span class="revenue-text">미리보기 무료 + <strong>나뭇잎 크레딧</strong></span></div><div class="revenue-item"><span class="revenue-icon">💎</span><span class="revenue-text"><strong>프리미엄 구독</strong> (광고 제거/아이템 혜택)</span></div><div class="revenue-item"><span class="revenue-icon">🤝</span><span class="revenue-text">B2B·지자체 제휴</span></div></div></div>
+        <div class="business-card card"><h3><i class="fas fa-users"></i> 타겟 고객</h3><div class="target-segments"><div class="segment-item"><span class="segment-icon">🧩</span><span class="segment-text">누구나</span></div><div class="segment-item"><span class="segment-icon">👴👵</span><span class="segment-text">50–70대(기억 보존)</span></div><div class="segment-item"><span class="segment-icon">🏥</span><span class="segment-text">의료기관(치매 예방)</span></div><div class="segment-item"><span class="segment-icon">🎓</span><span class="segment-text">교육기관(지역사 기록)</span></div></div></div>
+        <div class="business-card card"><h3><i class="fas fa-rocket"></i> 성장 전략</h3><div class="growth-strategy"><div class="strategy-item"><span class="strategy-number">1</span><span class="strategy-text">국내 점유율 확대</span></div><div class="strategy-item"><span class="strategy-number">2</span><span class="strategy-text">B2B 파트너십</span></div><div class="strategy-item"><span class="strategy-number">3</span><span class="strategy-text">AI 고도화</span></div><div class="strategy-item"><span class="strategy-number">4</span><span class="strategy-text">글로벌 진출</span></div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="memory-house">
+    <div class="container">
+      <h2 class="section-title">🏠 기억의 집</h2>
+      <p class="subtle" style="text-align:center;margin-bottom:1rem">기본 집 제공, 나뭇잎 크레딧으로 가상공간을 꾸며보세요.</p>
+      <div class="community-filters" style="justify-content:center;margin-bottom:1rem;"><button class="filter-btn active" data-filter="my" type="button">나의 집</button><button class="filter-btn" data-filter="leaf" type="button">나뭇잎</button></div>
+      <div class="post-card"><div class="post-header"><div class="post-author"><div class="author-avatar"><i class="fas fa-user"></i></div><div class="author-info"><div class="author-name">당신의 기억의 집</div><div class="post-date subtle">꾸미기 미리보기</div></div></div><div class="post-category">집 꾸미기</div></div><div class="post-content"><p class="subtle">나뭇잎 120개 • 배경: 석양 마을 • 액자 2 • 오브젝트: 추억 상자, 라디오</p></div><div class="post-actions"><button class="action-btn" type="button"><i class="fas fa-headphones"></i> 이웃 이야기 듣기</button><button class="action-btn" type="button"><i class="fas fa-leaf"></i> 나뭇잎 안내</button><button class="action-btn" type="button"><i class="fas fa-home"></i> 집 꾸미기</button></div></div>
+    </div>
+  </section>
+
+  <section id="competitive-advantage">
+    <div class="container">
+      <h2 class="section-title">🏆 경쟁 우위 및 차별화</h2>
+      <div class="grid-3">
+        <div class="advantage-card card"><div class="advantage-icon" style="text-align:center;font-size:2rem">🇰🇷</div><h3>한국 문화 특화</h3><p class="subtle">암행어사 인증으로 신뢰 기반 형성</p><div class="advantage-features" style="display:flex;gap:.4rem;flex-wrap:wrap;justify-content:center"><span class="feature-tag">문화 차별화</span><span class="feature-tag">신뢰성</span><span class="feature-tag">지역성</span></div></div>
+        <div class="advantage-card card"><div class="advantage-icon" style="text-align:center;font-size:2rem">🎯</div><h3>정확한 타겟팅</h3><p class="subtle">고령층·가족·교육·의료 중심 수요</p><div class="advantage-features" style="display:flex;gap:.4rem;flex-wrap:wrap;justify-content:center"><span class="feature-tag">시장 니즈</span><span class="feature-tag">고객 특화</span><span class="feature-tag">사회적 가치</span></div></div>
+        <div class="advantage-card card"><div class="advantage-icon" style="text-align:center;font-size:2rem">🔬</div><h3>기술적 융합</h3><p class="subtle">STT·GPT·TTS·이미지 생성 통합</p><div class="advantage-features" style="display:flex;gap:.4rem;flex-wrap:wrap;justify-content:center"><span class="feature-tag">AI 통합</span><span class="feature-tag">혁신</span><span class="feature-tag">UX</span></div></div>
+        <div class="advantage-card card"><div class="advantage-icon" style="text-align:center;font-size:2rem">💝</div><h3>감정적 연결</h3><p class="subtle">보편적 감정(추억)으로 높은 공감</p><div class="advantage-features" style="display:flex;gap:.4rem;flex-wrap:wrap;justify-content:center"><span class="feature-tag">감정 마케팅</span><span class="feature-tag">세대 연결</span></div></div>
+        <div class="advantage-card card"><div class="advantage-icon" style="text-align:center;font-size:2rem">📈</div><h3>확장 가능성</h3><p class="subtle">교육·의료·기업으로 수평 확장</p><div class="advantage-features" style="display:flex;gap:.4rem;flex-wrap:wrap;justify-content:center"><span class="feature-tag">B2B</span><span class="feature-tag">글로벌</span></div></div>
+        <div class="advantage-card card"><div class="advantage-icon" style="text-align:center;font-size:2rem">🛡️</div><h3>지속 가능성</h3><p class="subtle">구독·광고·제휴로 안정적 수익</p><div class="advantage-features" style="display:flex;gap:.4rem;flex-wrap:wrap;justify-content:center"><span class="feature-tag">수익 다각화</span><span class="feature-tag">안정성</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="application-sections">
+    <div class="container">
+      <h2 class="section-title">📑 공모전 신청 핵심 보강</h2>
+      <div class="grid-2" style="margin-bottom:24px"><div class="card"><h3><i class="fas fa-clipboard-check"></i> 시장 검증</h3><div class="spacer"></div><div class="kpi"><i class="fas fa-users"></i> 50~70대 200명 설문: 83% “기억 보존 니즈”</div><div class="kpi"><i class="fas fa-chart-pie"></i> 숏폼 시청자 300명: 72% “진정성 스토리 선호”</div><div class="kpi"><i class="fas fa-bolt"></i> 파일럿 2주: 스토리 생성 410건 / 업로드 180건</div><p class="subtle" style="margin-top:.6rem">* 실제 수치로 교체 권장</p></div><div class="card"><h3><i class="fas fa-balance-scale"></i> 경쟁 분석</h3><div class="spacer"></div><div class="grid-2"><div><strong>일반 AI 에디터</strong><p class="subtle">편집엔 강함 / 신뢰 인증·수익 분배 약함</p></div><div><strong>가족 앨범 앱</strong><p class="subtle">보관엔 강함 / 배포·수익화 약함</p></div><div><strong>기억의 집</strong><p class="subtle">AI 제작+유통+수익 분배+암행어사 인증</p></div></div></div></div>
+      <div class="card" style="margin-bottom:24px"><h3><i class="fas fa-route"></i> 실행 로드맵(12개월)</h3><div class="spacer"></div><div class="timeline"><div class="tl-item"><strong>Q1</strong> — 베타(스토리/음성/이미지) · 1천 DAU · 1만 콘텐츠</div><div class="tl-item"><strong>Q2</strong> — 암행어사 인증 · 로컬 크리에이터 300명</div><div class="tl-item"><strong>Q3</strong> — B2B(지자체/병원/학교) 10건 · 구독 전환 3%</div><div class="tl-item"><strong>Q4</strong> — 글로벌 코호트 테스트 · 월 매출 5천만원</div></div></div>
+      <div class="card" style="margin-bottom:24px"><h3><i class="fas fa-wallet"></i> 재무 계획(연간 가안)</h3><div class="grid-3" style="margin-top:.6rem"><div class="kpi"><i class="fas fa-sack-dollar"></i> 매출: 8.0억 (구독 4.0, 크레딧 2.0, B2B 2.0)</div><div class="kpi"><i class="fas fa-hand-holding-usd"></i> 비용: 6.2억 (인건비 3.0, 마케팅 2.0, 인프라 1.2)</div><div class="kpi"><i class="fas fa-line-chart"></i> BEP: 10~12개월</div></div><p class="subtle" style="margin-top:.6rem">* 상금/투자금: 베타 운영·마케팅·인증 시스템 고도화에 배분</p></div>
+      <div class="grid-2" style="margin-bottom:24px"><div class="risk"><i class="fas fa-exclamation-triangle" style="margin-top:2px"></i><div><strong>법/저작권/개인정보</strong><p class="subtle">민감 데이터·음성 저작권</p></div></div><div class="mitigation"><i class="fas fa-shield-alt" style="margin-top:2px"></i><div><strong>대응</strong><p class="subtle">암행어사 인증·동의서·콘텐츠 권리 정책·익명화</p></div></div><div class="risk"><i class="fas fa-exclamation-triangle" style="margin-top:2px"></i><div><strong>AI 오인식/딥페이크</strong><p class="subtle">허위 콘텐츠 확산 위험</p></div></div><div class="mitigation"><i class="fas fa-shield-alt" style="margin-top:2px"></i><div><strong>대응</strong><p class="subtle">다중 검증(AI+증인+암행어사), 콘텐츠 워터마크</p></div></div></div>
+      <div class="card"><h3><i class="fas fa-heart"></i> 사회적 임팩트 KPI(12개월)</h3><div class="grid-3" style="margin-top:.6rem"><div class="kpi"><i class="fas fa-users"></i> 고령 창작자 수익화 500명</div><div class="kpi"><i class="fas fa-city"></i> 지자체 파트너십 15건</div><div class="kpi"><i class="fas fa-handshake"></i> 지역 환원 3%+</div></div></div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container"><div class="footer-content"><div class="footer-logo">🏠 기억의 집</div><div class="social-links" aria-label="소셜 링크"><a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a><a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a><a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a><a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a></div></div><p style="margin-top:1rem;opacity:.8;">&copy; 2025 기억의 집. All rights reserved.</p></div>
+</footer>
+
+<script>
+document.querySelectorAll('a.nav-link[href^="#"]').forEach(a=>{a.addEventListener('click',function(e){e.preventDefault();const t=document.querySelector(this.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'});});});
+let ticking=false;window.addEventListener('scroll',function(){if(!ticking){window.requestAnimationFrame(function(){const h=document.querySelector('header');h.style.background=(window.scrollY>100)?'rgba(255,255,255,.98)':'rgba(255,255,255,.95)';ticking=false;});ticking=true;}});
+const audioInput=document.getElementById('audioFileInput');if(audioInput){audioInput.addEventListener('change',function(){const label=document.querySelector('label[for="audioFileInput"].file-input-label');if(!label)return;if(this.files.length>0){label.innerHTML='<i class="fas fa-check"></i> '+this.files[0].name;label.style.background='linear-gradient(135deg,#10b981,#059669)';}else{label.innerHTML='<i class="fas fa-cloud-upload-alt"></i> 파일 선택하기';label.style.background='linear-gradient(135deg,#667eea,#764ba2)';}});}
+document.querySelectorAll('.btn-primary').forEach(btn=>{btn.dataset.original=btn.innerHTML;btn.addEventListener('click',function(){this.classList.add('loading');this.innerHTML='<i class="fas fa-spinner fa-spin"></i> 처리중...';setTimeout(()=>{this.classList.remove('loading');this.classList.add('success');this.innerHTML='<i class="fas fa-check"></i> 완료!';setTimeout(()=>{this.classList.remove('success');this.innerHTML=this.dataset.original;},1500);},1500);});});
+function sendMessage(){const input=document.getElementById('chatInput');const msg=input.value.trim();if(!msg)return;const wrap=document.getElementById('chatMessages');const me=document.createElement('div');me.className='message user';me.innerHTML='<div class="message-content">'+msg+'</div><div class="message-avatar"><i class="fas fa-user"></i></div>';wrap.appendChild(me);input.value='';wrap.scrollTop=wrap.scrollHeight;const typing=document.createElement('div');typing.className='message ai';typing.innerHTML='<div class="message-avatar"><i class="fas fa-robot"></i></div><div class="message-content"><span class="subtle">입력 중…</span></div>';wrap.appendChild(typing);wrap.scrollTop=wrap.scrollHeight;setTimeout(()=>{wrap.removeChild(typing);const replies=["멋진 이야기네요! 함께 콘텐츠로 빚어볼까요?","그 순간의 감정이 전해집니다. 기록으로 남겨봐요.","좋아요! 이미지와 오디오까지 구성해볼게요.","소중한 추억이네요. 세대와 지역을 잇는 스토리가 될 거예요."];const ai=document.createElement('div');ai.className='message ai';ai.innerHTML='<div class="message-avatar"><i class="fas fa-robot"></i></div><div class="message-content">'+replies[Math.floor(Math.random()*replies.length)]+'</div>';wrap.appendChild(ai);wrap.scrollTop=wrap.scrollHeight;},1100);}document.getElementById('chatInput').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();sendMessage();}});
+document.querySelectorAll('.filter-btn').forEach(btn=>{btn.addEventListener('click',function(){document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));this.classList.add('active');const f=this.getAttribute('data-filter');document.querySelectorAll('.post-card').forEach(card=>{const show=(f==='all'||card.getAttribute('data-category')===f);card.style.display=show?'block':'none';});});});
+document.querySelectorAll('.btn-like').forEach(btn=>{btn.addEventListener('click',function(){const num=parseInt(this.textContent.replace(/\D/g,''))||0;this.innerHTML='<i class="fas fa-heart" style="color:#ff6b6b"></i> '+(num+1);});});
+</script>
+
+</body>
+</html>
+
