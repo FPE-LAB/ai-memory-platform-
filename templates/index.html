@@ -1363,7 +1363,64 @@
           <button class="filter-btn" data-filter="family">가족</button>
           <button class="filter-btn" data-filter="travel">여행</button>
         </div>
-        <div class="community-posts"><!-- 기존 카드들 유지 --></div>
+        <div class="community-posts">
+          <div class="post-card" data-category="story">
+            <div class="post-header">
+              <div class="post-author">
+                <div class="author-avatar"><i class="fas fa-user"></i></div>
+                <div class="author-info">
+                  <div class="author-name">김미영</div>
+                  <div class="post-date">2시간 전</div>
+                </div>
+              </div>
+              <div class="post-category">
+                스토리
+                <div class="verification-badge" title="암행어사 인증 완료">
+                  <i class="fas fa-check"></i>
+                </div>
+              </div>
+            </div>
+            <div class="post-content">
+              <h3>할머니의 김치 담그기</h3>
+              <p>어릴 적 할머니와 함께 김치를 담그던 추억이 떠올라서 AI에게 이야기해줬어요. 할머니의 따뜻한 손길과 김치 맛이 그립네요.</p>
+              <div class="post-image">
+                <img src="/static/house-preview.png" alt="이미지 미리보기" style="width: 100%; border-radius: 10px;">
+              </div>
+            </div>
+            <div class="post-actions">
+              <button class="action-btn"><i class="fas fa-heart"></i> 24</button>
+              <button class="action-btn"><i class="fas fa-comment"></i> 8</button>
+              <button class="action-btn"><i class="fas fa-share"></i> 공유</button>
+            </div>
+          </div>
+
+          <div class="post-card" data-category="memory">
+            <div class="post-header">
+              <div class="post-author">
+                <div class="author-avatar"><i class="fas fa-user"></i></div>
+                <div class="author-info">
+                  <div class="author-name">박준호</div>
+                  <div class="post-date">5시간 전</div>
+                </div>
+              </div>
+              <div class="post-category">
+                추억
+                <div class="verification-badge" title="암행어사 인증 완료">
+                  <i class="fas fa-check"></i>
+                </div>
+              </div>
+            </div>
+            <div class="post-content">
+              <h3>첫 월급으로 부모님께 선물</h3>
+              <p>첫 월급을 받고 부모님께 선물을 드렸던 순간을 AI에게 녹음해서 텍스트로 변환했어요.</p>
+            </div>
+            <div class="post-actions">
+              <button class="action-btn"><i class="fas fa-heart"></i> 31</button>
+              <button class="action-btn"><i class="fas fa-comment"></i> 12</button>
+              <button class="action-btn"><i class="fas fa-share"></i> 공유</button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -1449,202 +1506,36 @@
   <section id="memory-house">
     <div class="container">
       <h2 class="section-title">🏠 기억의 집</h2>
-      <p style="text-align: center; font-size: 1.2rem; color: #666; margin-bottom: 1.5rem;">
-        기본 집은 모두 제공됩니다. 꾸밈 여부는 개인의 선택이며, 배경/액자/오브젝트로 자아를 표현해 보세요.
-      </p>
+      <p style="text-align: center; font-size: 1.2rem; color: #666; margin-bottom: 1.5rem;">기본 집은 모두 제공됩니다. 꾸밈 여부는 개인의 선택이며, 배경/액자/오브젝트로 자아를 표현해 보세요.</p>
 
-      
+      <div class="community-filters" style="justify-content:center; margin-bottom:1.5rem;">
+        <button class="filter-btn active" data-filter="my">나의 집</button>
+        <button class="filter-btn" data-filter="leaf">나뭇잎</button>
+      </div>
 
-      <div class="community-content">
-        <div class="community-filters">
-          <button class="filter-btn active" data-filter="all">전체</button>
-          <button class="filter-btn" data-filter="story">스토리</button>
-          <button class="filter-btn" data-filter="memory">추억</button>
-          <button class="filter-btn" data-filter="family">가족</button>
-          <button class="filter-btn" data-filter="travel">여행</button>
+      <div class="post-card" data-section="memory-house">
+        <div class="post-header">
+          <div class="post-author">
+            <div class="author-avatar"><i class="fas fa-user"></i></div>
+            <div class="author-info">
+              <div class="author-name">당신의 기억의 집</div>
+              <div class="post-date">꾸미기 미리보기</div>
+            </div>
+          </div>
+          <div class="post-category">집 꾸미기</div>
         </div>
-
-        <div class="community-posts">
-          <div class="post-card" data-category="story">
-                         <div class="post-header">
-               <div class="post-author">
-                 <div class="author-avatar">
-                   <i class="fas fa-user"></i>
-                 </div>
-                 <div class="author-info">
-                   <div class="author-name">김미영</div>
-                   <div class="post-date">2시간 전</div>
-                 </div>
-               </div>
-               <div class="post-category">
-                 스토리
-                 <div class="verification-badge" title="암행어사 인증 완료">
-                   <i class="fas fa-check"></i>
-                 </div>
-               </div>
-             </div>
-            <div class="post-content">
-              <h3>할머니의 김치 담그기</h3>
-              <p>어릴 적 할머니와 함께 김치를 담그던 추억이 떠올라서 AI에게 이야기해줬어요. 할머니의 따뜻한 손길과 김치 맛이 그립네요. AI가 만들어준 스토리가 정말 감동적이었습니다.</p>
-              <div class="post-image">
-                <img src="/static/house-preview.png" alt="이미지 미리보기" style="width: 100%; border-radius: 10px;">
-              </div>
-            </div>
-            <div class="post-actions">
-              <button class="action-btn"><i class="fas fa-heart"></i> 24</button>
-              <button class="action-btn"><i class="fas fa-comment"></i> 8</button>
-              <button class="action-btn"><i class="fas fa-share"></i> 공유</button>
-            </div>
-          </div>
-
-          
-
-          <div class="post-card" data-category="memory">
-                         <div class="post-header">
-               <div class="post-author">
-                 <div class="author-avatar">
-                   <i class="fas fa-user"></i>
-                 </div>
-                 <div class="author-info">
-                   <div class="author-name">박준호</div>
-                   <div class="post-date">5시간 전</div>
-                 </div>
-               </div>
-               <div class="post-category">
-                 추억
-                 <div class="verification-badge" title="암행어사 인증 완료">
-                   <i class="fas fa-check"></i>
-                 </div>
-               </div>
-             </div>
-            <div class="post-content">
-              <h3>첫 월급으로 부모님께 선물</h3>
-              <p>첫 월급을 받고 부모님께 선물을 드렸던 순간을 AI에게 녹음해서 텍스트로 변환했어요. 그때의 설렘과 감동이 다시 살아나는 것 같았습니다. AI가 만들어준 이미지도 정말 아름다워요.</p>
-            </div>
-            <div class="post-actions">
-              <button class="action-btn"><i class="fas fa-heart"></i> 31</button>
-              <button class="action-btn"><i class="fas fa-comment"></i> 12</button>
-              <button class="action-btn"><i class="fas fa-share"></i> 공유</button>
-            </div>
-          </div>
-
-          <div class="post-card" data-category="family">
-            <div class="post-header">
-              <div class="post-author">
-                <div class="author-avatar">
-                  <i class="fas fa-user"></i>
-                </div>
-                <div class="author-info">
-                  <div class="author-name">이수진</div>
-                  <div class="post-date">1일 전</div>
-                </div>
-              </div>
-              <div class="post-category">가족</div>
-            </div>
-            <div class="post-content">
-              <h3>엄마의 목소리로 만든 스토리</h3>
-              <p>엄마의 목소리를 녹음해서 AI에게 전달했어요. 엄마가 들려주신 어린 시절 이야기가 텍스트로 변환되고, 그 내용을 바탕으로 아름다운 이미지도 만들어졌습니다. 가족의 소중함을 다시 한번 느꼈어요.</p>
-              <div class="post-image">
-                <img src="/static/house-preview.png" alt="이미지 미리보기" style="width: 100%; border-radius: 10px;">
-              </div>
-            </div>
-            <div class="post-actions">
-              <button class="action-btn"><i class="fas fa-heart"></i> 45</button>
-              <button class="action-btn"><i class="fas fa-comment"></i> 15</button>
-              <button class="action-btn"><i class="fas fa-share"></i> 공유</button>
-            </div>
-          </div>
-
-          <div class="post-card" data-category="travel">
-            <div class="post-header">
-              <div class="post-author">
-                <div class="author-avatar">
-                  <i class="fas fa-user"></i>
-                </div>
-                <div class="author-info">
-                  <div class="author-name">최민수</div>
-                  <div class="post-date">2일 전</div>
-                </div>
-              </div>
-              <div class="post-category">여행</div>
-            </div>
-            <div class="post-content">
-              <h3>제주도 여행 추억</h3>
-              <p>친구들과 함께한 제주도 여행 이야기를 AI에게 들려줬어요. 바다를 보며 나눈 대화, 맛있는 음식, 아름다운 풍경들이 AI가 만들어준 콘텐츠로 다시 살아났습니다. 그때의 설렘과 기쁨이 떠올라요.</p>
-            </div>
-            <div class="post-actions">
-              <button class="action-btn"><i class="fas fa-heart"></i> 28</button>
-              <button class="action-btn"><i class="fas fa-comment"></i> 9</button>
-              <button class="action-btn"><i class="fas fa-share"></i> 공유</button>
-            </div>
+        <div class="post-content">
+          <p>나뭇잎 120개 보유 • 배경: 석양 마을 • 액자 2개 • 오브젝트: 추억 상자, 오래된 라디오</p>
+          <div class="post-image">
+            <img src="/static/house-preview.png" alt="기억의 집 미리보기" style="width:100%; border-radius:10px;">
           </div>
         </div>
-
-                 <div class="community-cta">
-           <h3>당신의 이야기도 공유해보세요!</h3>
-           <p>AI와 함께 만든 콘텐츠를 커뮤니티에 올리고 다른 사용자들과 소통해보세요.</p>
-           <button class="btn-primary" style="width: auto; padding: 1rem 2rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: fit-content;">
-             <i class="fas fa-plus"></i> 스토리 작성하기
-           </button>
-         </div>
-
-         <!-- 암행어사 인증 시스템 -->
-         <div class="inspector-system">
-           <div class="inspector-header">
-             <h3><i class="fas fa-shield-alt"></i> 암행어사 인증제도</h3>
-             <p>지역 암행어사들이 AI와 함께 기억의 진위여부를 검증하여 인증 마크를 부여합니다</p>
-           </div>
-           
-           
-
-           <div class="inspector-process">
-             <h4>인증 과정</h4>
-             <div class="process-steps">
-               <div class="process-step">
-                 <div class="step-number">1</div>
-                 <div class="step-content">
-                   <h5>스토리 제출</h5>
-                   <p>사용자가 기억을 바탕으로 스토리를 작성하여 제출합니다</p>
-                 </div>
-               </div>
-               <div class="process-step">
-                 <div class="step-number">2</div>
-                 <div class="step-content">
-                   <h5>지역구 증인 선정</h5>
-                   <p>이야기에 대해 자신의 지역구 증인 또는 지인 2명을 증인으로 선정합니다</p>
-                 </div>
-               </div>
-               <div class="process-step">
-                 <div class="step-number">3</div>
-                 <div class="step-content">
-                   <h5>AI 1차 검증</h5>
-                   <p>AI가 스토리의 일관성과 논리성을 분석하고 증인들의 확인을 요청합니다</p>
-                 </div>
-               </div>
-               <div class="process-step">
-                 <div class="step-number">4</div>
-                 <div class="step-content">
-                   <h5>증인 채택 버튼</h5>
-                   <p>선정된 증인들이 채택 버튼을 통해 스토리의 진위를 확인합니다</p>
-                 </div>
-               </div>
-               <div class="process-step">
-                 <div class="step-number">5</div>
-                 <div class="step-content">
-                   <h5>자타공인 기억자산</h5>
-                   <p>증인들의 채택이 완료되면 자타공인 기억자산으로 인증 마크가 부여됩니다</p>
-                 </div>
-               </div>
-               <div class="process-step">
-                 <div class="step-number">6</div>
-                 <div class="step-content">
-                   <h5>암행어사 2차 검증</h5>
-                   <p>지역 암행어사가 최종 검증을 통해 기억의 진위여부를 최종 확인하고 공식 인증을 완료합니다</p>
-                 </div>
-               </div>
-             </div>
-           </div>
-         </div>
+        <div class="post-actions">
+          <button class="action-btn"><i class="fas fa-headphones"></i> 이웃 이야기 듣기</button>
+          <button class="action-btn"><i class="fas fa-leaf"></i> 나뭇잎 크레딧 안내</button>
+          <button class="action-btn"><i class="fas fa-home"></i> 집 꾸미기</button>
+        </div>
+      </div>
       </div>
     </div>
   </section>

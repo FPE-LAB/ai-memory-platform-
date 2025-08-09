@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, jsonify, render_template, send_from_directory
 import openai
 import sqlite3
 import os
@@ -8,6 +8,7 @@ import secrets
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = 'uploads'
+app.static_folder = 'static'
 app.config['SECRET_KEY'] = secrets.token_hex(16)  # 보안 키 추가
 os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 
@@ -114,6 +115,11 @@ def home():
 @app.route("/favicon.ico")
 def favicon():
     return "", 204
+
+# 정적 파일 서빙 강화
+@app.route('/static/<path:filename>')
+def static_files(filename):
+    return send_from_directory(app.static_folder, filename)
 
 # 업로드된 파일 제공용 (Vercel에서는 제한됨)
 @app.route('/uploads/<filename>')
